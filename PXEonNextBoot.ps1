@@ -20,6 +20,8 @@
 
 #> 
 
+#Requires -RunAsAdministrator
+
 $keywords = "IPV4|EFI Network|UEFI:Network Device|IP4"
 
 # Audit mode prevents the changes to the boot order and suppresses the reboot.
