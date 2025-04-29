@@ -11,6 +11,8 @@ This script adds new DLLs to the Global Assembly Cache which are required for
 these Appx cmdlets to function over PSRemoting.
 #>
 
+#Requires -RunAsAdministrator
+
 Add-Type -AssemblyName "System.EnterpriseServices"
 $publish = [System.EnterpriseServices.Internal.Publish]::new()
 
