@@ -4,7 +4,7 @@
     will allow the administrator to quickly log into one or more computers
     using a barcode scanner. The QR codes are automatically displayed by the 
     OS default application for PNG files. From there, they can be printed or
-    scanned on from the display.
+    scanned from the display.
 
 .PARAMETERS 
     -ComputerName
