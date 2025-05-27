@@ -15,6 +15,8 @@
 
 #>
 
+#Requires -RunAsAdministrator
+
 # Checks that Disk 0 is the boot disk.
 $DISKZERO = Get-Disk 0
 if ($DISKZERO.IsBoot -ne $true) {
