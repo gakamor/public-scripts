@@ -113,6 +113,7 @@ function Combine-ImagesWithLabels {
 }
 
 $legacyLAPS = $true
+$domain = "mydomain.com"
 
 # Ensure output directory is available
 $qrDir = "C:\TEMP"
@@ -129,7 +130,7 @@ if (-not(Get-Module -Name QRCodeGenerator -ListAvailable -ErrorAction SilentlyCo
 $imageList = @()
 foreach ($computer in $ComputerName) {
     $pngPath = "$($qrDir)\$($computer)-$(Get-Date -Format 'yyyyMMdd-HHmmss').png"
-    $lapspw = (Get-LapsADPassword -Identity $computer -AsPlainText -ErrorAction SilentlyContinue).Password
+    $lapspw = (Get-LapsADPassword -Identity $computer -Domain $domain -AsPlainText -ErrorAction SilentlyContinue).Password
     if (-not ($lapspw)){
         Write-Warning "$computer not found"
         Continue
@@ -149,7 +150,7 @@ foreach ($computer in $ComputerName) {
             Reset-AdmPwdPassword -ComputerName $computer -WhenEffective ([DateTime]::Now.AddHours($ExpirePwdHours)) | Out-Null ### Legacy LAPS
         }
         else {
-            Set-LapsADPasswordExpirationTime -Identity $computer -WhenEffective ([DateTime]::Now.AddHours($ExpirePwdHours)) | Out-Null ### Windows LAPS
+            Set-LapsADPasswordExpirationTime -Identity $computer -Domain $domain -WhenEffective ([DateTime]::Now.AddHours($ExpirePwdHours)) | Out-Null ### Windows LAPS
         }
     }
 }
