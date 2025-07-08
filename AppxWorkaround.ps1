@@ -7,7 +7,7 @@ The type initializer for '<Module>' threw an exception.
     + CategoryInfo          : NotSpecified: (:) [], TypeInitializationException
     + FullyQualifiedErrorId : System.TypeInitializationException
 
-This script adds runs the Appx command as a job so that it runs locally and
+This script runs the Appx command as a job so that it runs locally and
 bypasses the error.
 #>
 
