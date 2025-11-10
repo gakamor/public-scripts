@@ -27,6 +27,11 @@
     https://support.microsoft.com/en-us/topic/how-to-manage-the-windows-boot-manager-revocations-for-secure-boot-changes-associated-with-cve-2023-24932-41a975df-beb2-40c1-99a3-b3ff139f832d
 
 #>
+if ($env:firmware_type -ne "UEFI") {
+    # Exit script if set to legacy BIOS
+    Exit 0
+}
+
 $secureBootEnabled = Confirm-SecureBootUEFI
 $regPath = 'HKLM:\SYSTEM\CurrentControlSet\Control\SecureBoot'
 $valueName = 'AvailableUpdates'
